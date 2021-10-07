@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DB.Infrastructure.Config\DB.Infrastructure.Config.csproj" />
     <ProjectReference Include="..\DB.Infrastructure.EFCore\DB.Infrastructure.EFCore.csproj" />
   </ItemGroup>
 

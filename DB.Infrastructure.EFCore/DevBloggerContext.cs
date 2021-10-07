@@ -1,4 +1,6 @@
-﻿using DB.Domain.ArticleCategoryAgg;
+﻿using DB.Domain.ArticleAgg;
+using DB.Domain.ArticleCategoryAgg;
+using DB.Domain.CommentAgg;
 using DB.Infrastructure.EFCore.Mappings;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +13,8 @@ namespace DB.Infrastructure.EFCore
         }
 
         public DbSet<ArticleCategory> ArticleCategories { get; set; }
-
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -16,22 +16,22 @@ namespace _01_Framework.Infrastructure
             _context = context;
         }
 
-        public List<T> GetAll()
+        public virtual List<T> GetAll()
         {
             return _context.Set<T>().ToList();
         }
 
-        public T Get(TKey id)
+        public virtual T Get(TKey id)
         {
             return _context.Find<T>(id);
         }
 
-        public void Create(T entity)
+        public virtual void Create(T entity)
         {
             _context.Add<T>(entity);
         }
 
-        public bool Exists(Expression<Func<T, bool>> expression)
+        public virtual bool Exists(Expression<Func<T, bool>> expression)
         {
             return _context.Set<T>().Any(expression);
         }
