@@ -1,4 +1,5 @@
 ﻿using _01_Framework.Domain;
+using DB.Domain.ArticleCategoryAgg.Services;
 using System.Collections.Generic;
 
 namespace DB.Domain.ArticleCategoryAgg
@@ -15,15 +16,17 @@ namespace DB.Domain.ArticleCategoryAgg
         {
         }
         
-        public ArticleCategory(string name)
+        public ArticleCategory(string name, IArticleCategoryValidatorService validatorService)
         {
+            validatorService.CheckThisRecordAlreadyExist(name);
             Name = name;
             IsDeleted = false;
             //Articles = new List<Article>();
         }
 
-        public void Rename(string name)
+        public void Rename(string name, IArticleCategoryValidatorService validatorService)
         {
+            validatorService.CheckThisRecordAlreadyExist(name);
             Name = name;
         }
 

@@ -1,6 +1,7 @@
 ﻿using _01_Framework.Infrastructure;
 using DB.Application.Contracts.ArticleCategory;
 using DB.Domain.ArticleCategoryAgg;
+using DB.Domain.ArticleCategoryAgg.Services;
 using System.Collections.Generic;
 
 namespace DB.Application
@@ -9,10 +10,12 @@ namespace DB.Application
     {
         private readonly IArticleCategoryRepository _articleCategoryRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public ArticleCategoryApplication(IArticleCategoryRepository articleCategoryRepository, IUnitOfWork unitOfWork)
+        private readonly IArticleCategoryValidatorService _validatorService;
+        public ArticleCategoryApplication(IArticleCategoryRepository articleCategoryRepository, IUnitOfWork unitOfWork, IArticleCategoryValidatorService validatorService)
         {
             _articleCategoryRepository = articleCategoryRepository;
             _unitOfWork = unitOfWork;
+            _validatorService = validatorService;
         }
 
         public void Activate(long id)
@@ -26,7 +29,7 @@ namespace DB.Application
         public void Create(CreateArticleCategory command)
         {
             _unitOfWork.BeginTran();
-            var articleCategory = new ArticleCategory(command.Name);
+            var articleCategory = new ArticleCategory(command.Name, _validatorService);
             _articleCategoryRepository.Create(articleCategory);
             _unitOfWork.CommitTran();
         }
@@ -35,7 +38,7 @@ namespace DB.Application
         {
             _unitOfWork.BeginTran();
             var articleCategory = _articleCategoryRepository.Get(command.Id);
-            articleCategory.Rename(command.Name);
+            articleCategory.Rename(command.Name, _validatorService);
             _unitOfWork.CommitTran();
         }
 
