@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DB.Application.Contracts\DB.Application.Contracts.csproj" />
+    <ProjectReference Include="..\DB.Domain\DB.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

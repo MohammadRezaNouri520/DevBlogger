@@ -32,5 +32,9 @@ namespace DB.Domain.ArticleCategoryAgg
             IsDeleted = true;
         }
 
+        public void Activate()
+        {
+            IsDeleted = false;
+        }
     }
 }
