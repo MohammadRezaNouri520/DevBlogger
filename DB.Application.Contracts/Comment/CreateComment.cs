@@ -9,6 +9,7 @@ namespace DB.Application.Contracts.Comment
         public string Name { get; set; }
         [Required(ErrorMessage = "{0} is required")]
         [MaxLength(256)]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Required(ErrorMessage = "{0} is required")]
         [MaxLength(500)]

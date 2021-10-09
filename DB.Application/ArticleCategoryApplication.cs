@@ -57,6 +57,11 @@ namespace DB.Application
             return _articleCategoryRepository.GetList();
         }
 
+        public List<ArticleCategorySelectList> GetSelectList()
+        {
+            return _articleCategoryRepository.GetSelectList();
+        }
+
         public void Remove(long id)
         {
             _unitOfWork.BeginTran();

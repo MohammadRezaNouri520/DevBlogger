@@ -18,12 +18,22 @@ namespace DB.Infrastructure.EFCore.Repositories
         public List<ArticleCategoryViewModel> GetList()
         {
             return _context.ArticleCategories
-                .Select(a => new ArticleCategoryViewModel 
+                .Select(a => new ArticleCategoryViewModel
                 {
-                    Id=a.Id,
-                    Name=a.Name,
-                    Status=a.IsDeleted,
-                    CreationDate=a.CreationDate.ToString(CultureInfo.InvariantCulture)
+                    Id = a.Id,
+                    Name = a.Name,
+                    IsDeleted = a.IsDeleted,
+                    CreationDate = a.CreationDate.ToString(CultureInfo.InvariantCulture)
+                }).OrderByDescending(a => a.Id).ToList();
+        }
+
+        public List<ArticleCategorySelectList> GetSelectList()
+        {
+            return _context.ArticleCategories
+                .Select(c => new ArticleCategorySelectList
+                {
+                    Id = c.Id,
+                    Name = c.Name
                 }).ToList();
         }
     }

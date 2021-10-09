@@ -16,6 +16,14 @@
   <ItemGroup>
     <ProjectReference Include="..\DB.Infrastructure.Config\DB.Infrastructure.Config.csproj" />
     <ProjectReference Include="..\DB.Infrastructure.EFCore\DB.Infrastructure.EFCore.csproj" />
+    <ProjectReference Include="..\DB.Infrastructure.Query\DB.Infrastructure.Query.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Admin\vendor\choices.js\src\" />
+    <Folder Include="wwwroot\Admin\vendor\choices.js\types\" />
+    <Folder Include="wwwroot\Client\vendor\font-awesome\less\" />
+    <Folder Include="wwwroot\Client\vendor\font-awesome\scss\" />
   </ItemGroup>
 
 </Project>

@@ -5,6 +5,7 @@ namespace DB.Application.Contracts.ArticleCategory
     public interface IArticleCategoryApplication
     {
         List<ArticleCategoryViewModel> GetList();
+        List<ArticleCategorySelectList> GetSelectList();
         void Create(CreateArticleCategory command);
         EditArticleCategory GetBy(long id);
         void Edit(EditArticleCategory command);

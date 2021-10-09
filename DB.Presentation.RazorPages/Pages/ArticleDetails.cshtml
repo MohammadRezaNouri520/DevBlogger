@@ -1,0 +1,86 @@
+﻿@page "{id:long}"
+@model DB.Presentation.RazorPages.Pages.ArticleDetailsModel
+@{
+    ViewData["Title"] = Model.Article.Title;
+}
+
+<main class="post blog-post col-lg-12">
+    <div class="container">
+        <div class="post-single">
+            <div class="post-thumbnail">
+                <img src="@Model.Article.Image" alt="@Model.Article.Title" title="@Model.Article.Title" class="img-fluid">
+            </div>
+            <div class="post-details">
+                <div class="post-meta d-flex justify-content-between">
+                    <div class="category"><a href="#">@Model.Article.ArticleCategory</a></div>
+                </div>
+                <h1>
+                    @Model.Article.Title
+                    <a href="#"><i class="fa fa-bookmark-o"></i></a>
+                </h1>
+                <div class="post-footer d-flex align-items-center flex-column flex-sm-row">
+                    <div class="d-flex align-items-center flex-wrap">
+                        <div class="date"><i class="icon-clock"></i>@Model.Article.CreationDate</div>
+                        <div class="comments meta-last"><i class="icon-comment"></i>@Model.Article.CommentsCount</div>
+                    </div>
+                </div>
+                <div class="post-body">
+                    <p class="lead">
+                        @Model.Article.ShortDescription
+                    </p>
+                    @Model.Article.Content
+                </div>
+
+                <div class="post-comments">
+                    <header>
+                        <h3 class="h6">Post Comments<span class="no-of-comments">(@Model.Article.CommentsCount)</span></h3>
+                    </header>
+                    @foreach (var comment in Model.Article.Comments)
+                    {
+                        <div class="comment">
+                            <div class="comment-header d-flex justify-content-between">
+                                <div class="user d-flex align-items-center">
+                                    <div class="image">
+                                        <img src="~/Client/img/user.svg" alt="..." class="img-fluid rounded-circle">
+                                    </div>
+                                    <div class="title">
+                                        <strong>@comment.Name</strong><span class="date">@comment.CreationDate</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-body">
+                                <p>@comment.Message</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="add-comment">
+                    <header>
+                        <h3 class="h6">Leave a reply</h3>
+                    </header>
+                    <form class="commenting-form" method="post">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <input asp-for="Comment.Name" placeholder="Name" class="form-control">
+                                <span class="text-danger" asp-validation-for="Comment.Name"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input asp-for="Comment.Email" placeholder="Email Address (will not be published)" class="form-control">
+                                <span class="text-danger" asp-validation-for="Comment.Email"></span>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <textarea asp-for="Comment.Message" placeholder="Type your comment" class="form-control"></textarea>
+                                <span class="text-danger" asp-validation-for="Comment.Message"></span>
+                            </div>
+                            <input type="hidden" asp-for="Comment.ArticleId" />
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="btn btn-secondary">Submit Comment</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

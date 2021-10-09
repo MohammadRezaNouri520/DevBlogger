@@ -7,5 +7,6 @@ namespace DB.Domain.ArticleCategoryAgg
     public interface IArticleCategoryRepository :IRepository<long, ArticleCategory>
     {
         List<ArticleCategoryViewModel> GetList();
+        List<ArticleCategorySelectList> GetSelectList();
     }
 }

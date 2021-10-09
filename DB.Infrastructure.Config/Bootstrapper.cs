@@ -10,6 +10,7 @@ using DB.Domain.ArticleCategoryAgg.Services;
 using DB.Domain.CommentAgg;
 using DB.Infrastructure.EFCore;
 using DB.Infrastructure.EFCore.Repositories;
+using DB.Infrastructure.Query;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -36,6 +37,8 @@ namespace DB.Infrastructure.Config
 
             services.AddTransient<ICommentRepository, CommentRepository>();
             services.AddTransient<ICommentApplication, CommentApplication>();
+
+            services.AddTransient<IArticleQuery, ArticleQuery>();
 
         }
     }

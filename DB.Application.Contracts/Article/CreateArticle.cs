@@ -8,9 +8,11 @@ namespace DB.Application.Contracts.Article
         [MaxLength(500)]
         public string Title { get; set; }
         [Required(ErrorMessage = "{0} is required")]
+        [Display(Name ="Category")]
         public long ArticleCategoryId { get; set; }
         
         [Required(ErrorMessage = "{0} is required")]
+        [Display(Name ="Image Path")]
         public string Image { get; set; }
         
         [Required(ErrorMessage ="{0} is required")]

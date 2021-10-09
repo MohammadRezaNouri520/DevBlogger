@@ -24,8 +24,8 @@ namespace DB.Infrastructure.EFCore.Repositories
                 Title= a.Title,
                 Category = a.ArticleCategory.Name,
                 CreationDate=a.CreationDate.ToString(CultureInfo.InvariantCulture),
-                Status = a.IsDeleted
-            }).ToList();
+                IsDeleted = a.IsDeleted
+            }).OrderByDescending(a => a.Id).ToList();
         }
     }
 }

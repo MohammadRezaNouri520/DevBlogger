@@ -1,0 +1,74 @@
+﻿@page "{id:long}"
+@model DB.Presentation.RazorPages.Areas.Administrator.Pages.ArticleManagement.EditModel
+@{
+    ViewData["Title"] = "Edit Article";
+}
+
+<!-- Page Header-->
+<header class="bg-white shadow-sm px-4 py-3 z-index-20">
+    <div class="container-fluid px-0">
+        <h2 class="mb-0 p-1">Articles</h2>
+    </div>
+</header>
+<!-- Breadcrumb-->
+<div class="bg-white">
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3">
+                <li class="breadcrumb-item"><a class="fw-light" asp-area="Administrator" asp-page="/Index">Home</a></li>
+                <li class="breadcrumb-item"><a class="fw-light" asp-area="Administrator" asp-page="/ArticleManagement/Index">Articles</a></li>
+                <li class="breadcrumb-item active fw-light" aria-current="page">Edit Article</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Basic Form-->
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="h4 mb-0">Edit Article</h3>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <div class="row">
+                    <input type="hidden" asp-for="Article.Id" />
+                    <div class="mb-3 col-lg-6 col-md-12 col-sm-12">
+                        <label class="form-label" asp-for="Article.Title"></label>
+                        <input class="form-control" asp-for="Article.Title" aria-describedby="titleHelp">
+                        <div class="form-text" id="titleHelp">Enter the Article title.</div>
+                        <span class="text-danger" asp-validation-for="Article.Title"></span>
+                    </div>
+                    <div class="mb-3 col-lg-6 col-md-12 col-sm-12">
+                        <label class="form-label" asp-for="Article.ArticleCategoryId"></label>
+                        <select class="form-select mb-3" asp-for="Article.ArticleCategoryId" asp-items="Model.ArticleCategories">
+                            <option value="0" selected>Select Category...</option>
+                        </select>
+                        <span class="text-danger" asp-validation-for="Article.ArticleCategoryId"></span>
+                    </div>
+                </div>
+                <div class="mb-3 col-lg-12 col-md-12 col-sm-12">
+                    <label class="form-label" asp-for="Article.Image"></label>
+                    <input class="form-control" asp-for="Article.Image" aria-describedby="imgagePathHelp">
+                    <div class="form-text" id="imgagePathHelp">Enter the Image Path.</div>
+                    <span class="text-danger" asp-validation-for="Article.Image"></span>
+                </div>
+                <div class="mb-3 col-lg-12 col-md-12 col-sm-12">
+                    <label class="form-label" asp-for="Article.ShortDescription"></label>
+                    <textarea rows="3" class="form-control" asp-for="Article.ShortDescription" aria-describedby="shortDescriptionHelp"></textarea>
+                    <div class="form-text" id="shortDescriptionHelp">Enter a short description of the article.</div>
+                    <span class="text-danger" asp-validation-for="Article.ShortDescription"></span>
+                </div>
+                <div class="mb-3 col-lg-12 col-md-12 col-sm-12">
+                    <label class="form-label" asp-for="Article.Content"></label>
+                    <textarea rows="8" class="form-control" asp-for="Article.Content" aria-describedby="contentHelp"></textarea>
+                    <div class="form-text" id="contentHelp">Write your content here.</div>
+                    <span class="text-danger" asp-validation-for="Article.Content"></span>
+                </div>
+                <a asp-page="./Index" class="btn btn-secondary">Back</a>
+                <button class="btn btn-primary" type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
